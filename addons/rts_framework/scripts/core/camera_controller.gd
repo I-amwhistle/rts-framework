@@ -44,6 +44,9 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion and rotating:
 		handle_mouse_rotation(event.relative)
+	
+	if event is InputEventPanGesture and event.delta.y != 0:
+		zoom_to(current_zoom - zoom_speed * event.delta.y)
 
 # --- Movement ---
 func handle_movement(delta: float) -> void:
